@@ -45,18 +45,9 @@
         }
     }
     
-    [self fixWrongLocationOfScriptingDefinitionFileIfNeeded];
-    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserverForName:NSWorkspaceDidLaunchApplicationNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-        if ([note.userInfo[@"NSApplicationName"] isEqualToString:@"Spotify"]) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self fixWrongLocationOfScriptingDefinitionFileIfNeeded];
-            });
-        }
-    }];
-    
     self.spotify = [SpotifyController spotifyController];
     self.spotify.delegate = self;
-    [self.spotify startService];
+    [self.spotify firstAdCheck];
 
 	[[self.statusMenu itemWithTag:-1] setState:(self.appData.shouldShowNotifications ? NSOnState : NSOffState)];
 }
@@ -87,25 +78,6 @@
     [self.statusItem setMenu:self.statusMenu];
     
     [self.statusItem setHighlightMode:YES];
-}
-
-- (void)fixWrongLocationOfScriptingDefinitionFileIfNeeded {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSString *spotifyResourceFolder = [[[[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:@"com.spotify.client"] path] stringByAppendingString:@"/Contents/Resources/"];
-    NSString *rightFile = [spotifyResourceFolder stringByAppendingString:@"Spotify.sdef"];
-    
-    if ([manager fileExistsAtPath:rightFile])
-        return;
-    
-    NSString *wrongFile = [spotifyResourceFolder stringByAppendingString:@"applescript/Spotify.sdef"];
-    [manager copyItemAtPath:wrongFile toPath:rightFile error:nil];
-    
-    NSRunningApplication *spotify = [[NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.spotify.client"] firstObject];
-    
-    if (spotify) {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Spotify restart required" defaultButton:@"OK" alternateButton:@"I'll do it myself" otherButton:nil informativeTextWithFormat:@"Sorry to interrupt, but your Spotify app must be restarted to work with Spotifree. You can do it now or later, manually, if you'd rather enjoy that last McDonald's ad."];
-        [alert beginSheetModalForWindow:nil modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:"fixAlert"];
-    }
 }
 
 #pragma mark -
@@ -154,14 +126,6 @@
             self.statusItem = nil;
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hideMenuBarIcon"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-        
-        if (strcmp(contextInfo, "fixAlert") == 0) {
-            NSRunningApplication *spotify = [[NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.spotify.client"] firstObject];
-            [spotify terminate];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [[NSWorkspace sharedWorkspace] launchApplication:@"Spotify"];
-            });
         }
     }
 }

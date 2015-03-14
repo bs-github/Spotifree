@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		941A8E231AB4288800256C4E /* patches.plist in Resources */ = {isa = PBXBuildFile; fileRef = 941A8E221AB4288800256C4E /* patches.plist */; };
 		943164D9186C3724005277EA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943164D8186C3724005277EA /* Cocoa.framework */; };
 		943164E3186C3724005277EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 943164E1186C3724005277EA /* InfoPlist.strings */; };
 		943164E5186C3724005277EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 943164E4186C3724005277EA /* main.m */; };
@@ -28,6 +29,7 @@
 		94624845186C3A4E00810C69 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94624844186C3A4E00810C69 /* ScriptingBridge.framework */; };
 		946D9AD51AAD04650042704B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 946D9AD41AAD04650042704B /* Sparkle.framework */; };
 		946D9AD61AAD05760042704B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 946D9AD41AAD04650042704B /* Sparkle.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		947849A91AB3BFAB0021D13A /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 947849A81AB3BFAB0021D13A /* FileHash.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 		15908825193B83CF009F2C99 /* SpotiFree_Black.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpotiFree_Black.svg; sourceTree = "<group>"; };
 		15908826193B83CF009F2C99 /* SpotiFree_Color.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SpotiFree_Color.ai; sourceTree = "<group>"; };
 		15908827193B83CF009F2C99 /* SpotiFree_Color.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpotiFree_Color.svg; sourceTree = "<group>"; };
+		941A8E221AB4288800256C4E /* patches.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = patches.plist; sourceTree = "<group>"; };
 		943164D5186C3724005277EA /* Spotifree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotifree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		943164D8186C3724005277EA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		943164DB186C3724005277EA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -91,6 +94,8 @@
 		94624838186C397200810C69 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuController.m; sourceTree = "<group>"; };
 		94624844186C3A4E00810C69 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		946D9AD41AAD04650042704B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		947849A71AB3BFAB0021D13A /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHash.h; sourceTree = "<group>"; };
+		947849A81AB3BFAB0021D13A /* FileHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHash.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +178,7 @@
 		943164DE186C3724005277EA /* SpotiFree */ = {
 			isa = PBXGroup;
 			children = (
+				947849A61AB3BF920021D13A /* MD5 */,
 				94624832186C394D00810C69 /* Header */,
 				94624827186C38C900810C69 /* Data */,
 				943164EA186C3724005277EA /* AppDelegate.h */,
@@ -199,6 +205,7 @@
 				943164E6186C3724005277EA /* SpotiFree-Prefix.pch */,
 				943164E7186C3724005277EA /* Credits.rtf */,
 				94624830186C394500810C69 /* License.txt */,
+				941A8E221AB4288800256C4E /* patches.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -245,6 +252,15 @@
 				94624833186C395A00810C69 /* Spotify.h */,
 			);
 			name = Header;
+			sourceTree = "<group>";
+		};
+		947849A61AB3BF920021D13A /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				947849A71AB3BFAB0021D13A /* FileHash.h */,
+				947849A81AB3BFAB0021D13A /* FileHash.m */,
+			);
+			name = MD5;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +346,7 @@
 				943164E9186C3724005277EA /* Credits.rtf in Resources */,
 				94624831186C394500810C69 /* License.txt in Resources */,
 				94624829186C38E500810C69 /* AppleScriptCmds.plist in Resources */,
+				941A8E231AB4288800256C4E /* patches.plist in Resources */,
 				94611BF7186C479900378530 /* README.md in Resources */,
 				943164EF186C3724005277EA /* MainMenu.xib in Resources */,
 			);
@@ -355,6 +372,7 @@
 				94624839186C397200810C69 /* MenuController.m in Sources */,
 				943164EC186C3724005277EA /* AppDelegate.m in Sources */,
 				943164E5186C3724005277EA /* main.m in Sources */,
+				947849A91AB3BFAB0021D13A /* FileHash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

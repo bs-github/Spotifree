@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, SFSpotifyState) {
 
 + (id)spotifyController;
 
-- (void)startService;
+- (void)firstAdCheck;
 
 @property (assign) id<SpotifyControllerDelegate> delegate;
 

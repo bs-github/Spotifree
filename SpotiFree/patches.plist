@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>f0ef23a30768f37dd106ac477e4099ba</key>
+	<dict>
+		<key>patched</key>
+		<false/>
+		<key>patchData</key>
+		<array>
+			<dict>
+				<key>offset</key>
+				<integer>996574</integer>
+				<key>data</key>
+				<integer>102</integer>
+			</dict>
+			<dict>
+				<key>offset</key>
+				<real>996575</real>
+				<key>data</key>
+				<integer>15</integer>
+			</dict>
+			<dict>
+				<key>offset</key>
+				<real>996576</real>
+				<key>data</key>
+				<integer>31</integer>
+			</dict>
+			<dict>
+				<key>offset</key>
+				<real>996577</real>
+				<key>data</key>
+				<integer>68</integer>
+			</dict>
+		</array>
+	</dict>
+    <key>d06057cf8161926909b3ee39833c5a8d</key>
+    <dict>
+        <key>patched</key>
+        <true/>
+    </dict>
+</dict>
+</plist>
