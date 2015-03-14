@@ -11,3 +11,6 @@ On the first run, **Spotifree** will ask you if you want it to run automatically
 
 ## How it works
 **Spotifree** is listening to a notification which is sent everytime the next song is played. Now, if the prefix of the current track URL is **spotify:ad** (as in all ads), Spotify is muted for a duration of an ad. When an ad is over, the volume is set to the way it was before.
+
+## Supported Spotify Versions
+* *1.0.1.1060.gc75ebdfd*
